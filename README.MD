@@ -27,9 +27,9 @@ Write a API for the following school registration system. The system should allo
 8. The system should maintain a record of all course enrollments and drops, and provide an interface for administrators to view this information.
 
 
-## Question 2 - Data structures:
+## Question 2
 
-### Exercise 1: Priority Queue
+### Exercise 1: Data structures - Priority Queue
 
 Implement a priority queue data structure that supports the following methods:
 
