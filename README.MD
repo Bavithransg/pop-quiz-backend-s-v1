@@ -16,7 +16,7 @@ Write a API for the following school registration system. The system should allo
 4. Administrators should be able to view a list of all courses and the number of students currently enrolled in each course.
 5. Administrators should be able to view a list of all students enrolled in a particular course.
 6. Students should be able to drop a course they have enrolled in, and the capacity of the course should be updated accordingly.
-7. The system should be able to handle concurrent requests from multiple users, ensuring that no two users can enroll in the same course at the same time.
+7. The system should be able to handle concurrent requests from multiple users.
 8. The system should maintain a record of all course enrollments and drops, and provide an interface for administrators to view this information.
 
 
