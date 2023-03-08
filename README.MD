@@ -54,5 +54,3 @@ isEmpty(): returns true if the priority queue is empty, false otherwise.
 2. Submit Github Repo
 
 Good Luck!
-
-# pop-quiz-backend-s-v1
