@@ -33,10 +33,10 @@ Write a API for the following school registration system. The system should allo
 
 Implement a priority queue data structure that supports the following methods:
 
-insert(item, priority): adds an item to the priority queue with a given priority
-pop(): removes and returns the item with the highest priority (i.e., the lowest priority number)
-peek(): returns the item with the highest priority without removing it
-isEmpty(): returns true if the priority queue is empty, false otherwise.
+- insert(item, priority): adds an item to the priority queue with a given priority
+- pop(): removes and returns the item with the highest priority (i.e., the lowest priority number)
+- peek(): returns the item with the highest priority without removing it
+- isEmpty(): returns true if the priority queue is empty, false otherwise.
 
 ### Notes
 
