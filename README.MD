@@ -50,7 +50,7 @@ isEmpty(): returns true if the priority queue is empty, false otherwise.
 
 ## Submission process
 
-1. Email your complete work to techchallenge@regovtech.com & paul.agada@regovtech.com
+1. Email your complete work to techchallenge@regovtech.com & careers@regovtech.com
 2. Submit Github Repo
 
 Good Luck!
