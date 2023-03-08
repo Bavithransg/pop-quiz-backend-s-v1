@@ -29,17 +29,7 @@ Write a API for the following school registration system. The system should allo
 
 ## Question 2 - Data structures:
 
-### Exercise 1: Implement a stack using an array
-
-Implement a stack data structure using an array in Python. Your implementation should have the following methods:
-
-push(value): adds an element to the top of the stack
-pop(): removes and returns the top element from the stack
-peek(): returns the top element of the stack without removing it
-is_empty(): returns True if the stack is empty, False otherwise
-
-
-### Exercise 2: Priority Queue
+### Exercise 1: Priority Queue
 
 Implement a priority queue data structure that supports the following methods:
 
