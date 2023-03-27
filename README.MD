@@ -1,49 +1,73 @@
-<p align="center"> 
-    <img src="https://regov-store.s3.ap-southeast-1.amazonaws.com/REGOV+Logo_CMYK.png" width="200" >
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
 
-# Welcome to this PopQuiz!
-### { "Engineer": "Backend" }
-### Coding Challenge
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-## Question 1
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-Write a API for the following school registration system. The system should allow students to register for courses and administrators to manage the course offerings and student enrollment. The following requirements should be met:
+## Description
 
-1. Students should be able to view a list of available courses and enroll in them if seats are available.
-2. Courses should have a maximum enrollment capacity that is set by the administrator. If a course reaches its maximum capacity, students should no longer be able to enroll in it.
-3. Administrators should be able to add new courses to the system, with a specified maximum capacity.
-4. Administrators should be able to view a list of all courses and the number of students currently enrolled in each course.
-5. Administrators should be able to view a list of all students enrolled in a particular course.
-6. Students should be able to drop a course they have enrolled in, and the capacity of the course should be updated accordingly.
-7. The system should be able to handle concurrent requests from multiple users.
-8. The system should maintain a record of all course enrollments and drops, and provide an interface for administrators to view this information.
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Installation
 
-## Question 2
+```bash
+$ npm install
+```
 
-### Exercise 1: Data structures - Priority Queue
+## Running the app
 
-Implement a priority queue data structure that supports the following methods:
+```bash
+# development
+$ npm run start
 
-- insert(item, priority): adds an item to the priority queue with a given priority
-- pop(): removes and returns the item with the highest priority (i.e., the lowest priority number)
-- peek(): returns the item with the highest priority without removing it
-- isEmpty(): returns true if the priority queue is empty, false otherwise.
+# watch mode
+$ npm run start:dev
 
-### Notes
+# production mode
+$ npm run start:prod
+```
 
-- Use Node.js | Python
-- Apply your preferred coding structure
-- Unit test is an added advantage
-- Add README
-- Produce use case or class diagram for the system architecture 
-- Writing design documents will attract extra points :)
+## Test
 
+```bash
+# unit tests
+$ npm run test
 
-## Submission process
+# e2e tests
+$ npm run test:e2e
 
-1. Email your complete work to techchallenge@regovtech.com & careers@regovtech.com
-2. Submit Github Repo
+# test coverage
+$ npm run test:cov
+```
 
-Good Luck!
+## Support
+
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+
+## Stay in touch
+
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
+
+## License
+
+Nest is [MIT licensed](LICENSE).
