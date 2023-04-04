@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { UsersController } from './controller/users.controller';
 import { UsersService } from './services/users.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Role, RoleSchema } from './schema/Roles.schema';
+import { Roles, RoleSchema } from './schema/Roles.schema';
 import { User, UserSchema } from './schema/User.schema';
 import { UserRoleMap, UserRoleMapSchema } from './schema/UserRoleMap.schema';
 import { AuthService } from './services/auth.service';
@@ -10,12 +10,12 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt/jwt.strategy';
 import { RolesGuard } from './services/roles.guard';
-import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './services/jwt.guard';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { name: Role.name, schema: RoleSchema },
+      { name: Roles.name, schema: RoleSchema },
       { name: User.name, schema: UserSchema },
       { name: UserRoleMap.name, schema: UserRoleMapSchema },
     ]),
@@ -30,10 +30,9 @@ import { APP_GUARD } from '@nestjs/core';
   ],
   controllers: [UsersController],
   providers: [UsersService, AuthService, JwtStrategy, 
-    {
-      provide: APP_GUARD,
-      useClass: RolesGuard,
-    }],
-  exports: [JwtStrategy, PassportModule]
+    RolesGuard,
+  JwtAuthGuard],
+  exports: [RolesGuard,
+    JwtAuthGuard]
 })
 export class UsersModule {}

@@ -9,3 +9,10 @@ export class CoursesDto {
     capacity: string;
 
 }
+
+export class JoinCoursesDto {
+    
+    @IsNotEmpty()
+    courseId: string;
+
+}

@@ -6,14 +6,14 @@ import { Document } from 'mongoose';
     autoIndex:true,
   })
 
-  export class Course extends Document {
+  export class Enroll extends Document {
     @Prop({ required: false,default:true })
-    status:boolean;
+    isActive:boolean;
     @Prop({require:true})
-    courseName:string;
+    courseId:string;
     @Prop({ required: true })
-    capacity:number;
+    studentId:string;
     
   }
 
-  export const CourseSchema = SchemaFactory.createForClass(Course);
+  export const EnrollSchema = SchemaFactory.createForClass(Enroll);

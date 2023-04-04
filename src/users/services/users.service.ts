@@ -1,8 +1,8 @@
-import { AdminSignUpDto, SignInDto } from '../dto/create-admin.dto';
+import { AdminSignUpDto, SignInDto, StudentSignUpDto } from '../dto/create-admin.dto';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from '../schema/User.schema';
-import { Role } from '../schema/Roles.schema';
+import { Roles } from '../schema/Roles.schema';
 import { Model } from 'mongoose';
 
 import { USERROLES } from '../enum/User.enum';
@@ -19,8 +19,8 @@ export class UsersService {
   constructor(
     @InjectModel(User.name)
     private readonly userModel: Model<User>,
-    @InjectModel(Role.name)
-    private readonly roleModel: Model<Role>,
+    @InjectModel(Roles.name)
+    private readonly roleModel: Model<Roles>,
     @InjectModel(UserRoleMap.name)
     private readonly userRoleMapModel: Model<UserRoleMap>,
     private jwtService: JwtService,
@@ -48,6 +48,38 @@ export class UsersService {
         );
 
         return 'Admin successfully created';
+      } else {
+        throw new UnauthorizedException('User Id Already exists');
+      }
+    } catch (error) {
+      console.log(error.code);
+
+      throw error;
+    }
+  }
+
+  async createStudent(studentDetails: StudentSignUpDto): Promise<string> {
+    try {
+      const user = await this.userModel.findOne({
+        userId: studentDetails.userId,
+      });
+      if (!user) {
+        let salt = await bcrypt.genSalt();
+        studentDetails.password = await bcrypt.hash(studentDetails.password, salt);
+
+        let roleId = await this.getRoleId(USERROLES.STUDENT);
+        let savedUserData = await this.userModel.create(studentDetails);
+
+        let userRoleMapObj: UserRoleMapInterface = {
+          userId: savedUserData.id,
+          userRoleId: roleId,
+        };
+
+        let savedUserRoleMap = await this.userRoleMapModel.create(
+          userRoleMapObj,
+        );
+
+        return 'Student successfully created';
       } else {
         throw new UnauthorizedException('User Id Already exists');
       }
@@ -102,9 +134,7 @@ export class UsersService {
         throw new UnauthorizedException('Please check your login credentials');
       }
     } catch (error) {
-      console.log(error);
-
-      throw new UnauthorizedException('Try after some time.');
+      throw new UnauthorizedException('Please check your login credentials');
     }
   }
 

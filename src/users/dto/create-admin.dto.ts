@@ -14,6 +14,20 @@ export class AdminSignUpDto {
 
 }
 
+export class StudentSignUpDto {
+    
+    @IsNotEmpty()
+    userId: string;
+
+    @IsNotEmpty()
+    name: string;
+
+    @IsNotEmpty()
+    password:string;
+
+
+}
+
 export class SignInDto {
     
     @IsNotEmpty()

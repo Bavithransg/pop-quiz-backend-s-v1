@@ -1,24 +1,45 @@
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import {
+  Injectable,
+  CanActivate,
+  ExecutionContext,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { ROLES_KEY } from '../decorator/roles.decorator';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { USERROLES } from '../enum/User.enum';
+import { Roles } from '../schema/Roles.schema';
+import { UserRoleMap } from '../schema/UserRoleMap.schema';
 
 @Injectable()
 export class RolesGuard implements CanActivate {
-  constructor(private reflector: Reflector) {}
+  constructor(
+    @InjectModel(UserRoleMap.name)
+    private readonly userRoleMapModel: Model<UserRoleMap>,
+    @InjectModel(Roles.name)
+    private readonly roleModel: Model<Roles>,    
+    private reflector: Reflector,
+  ) {}
 
-  canActivate(context: ExecutionContext): boolean {
-    const requiredRoles = this.reflector.getAllAndOverride<USERROLES[]>(ROLES_KEY, [
-      context.getHandler(),
-      context.getClass(),
-    ]);
-    if (!requiredRoles) {
-      return true;
+  async canActivate(context: ExecutionContext): Promise<boolean> {
+    try {
+      const roles = this.reflector.get<USERROLES[]>(
+        'role',
+        context.getHandler(),
+      );
+      if (!roles) {
+        return true;
+      }
+      const request = context.switchToHttp().getRequest();
+      const userRoleMap: UserRoleMap = await this.userRoleMapModel.findOne({
+        userId: request.user.id,
+      });
+      const userRole: Roles = await this.roleModel.findById(
+        userRoleMap.userRoleId,
+      );
+      return roles.some((role) => userRole.role?.includes(role))
+    } catch (error) {
+      throw new UnauthorizedException();
     }
-        
-    const req = context.switchToHttp().getRequest();
-    console.log(req);
-    
-    return 
   }
 }
